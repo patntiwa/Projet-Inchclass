@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page | </title>
+    <link rel="stylesheet" href="assests/css/Styles.css">
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-menu mobile-container">
+            <ul class="menu #myLinks">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <ul class="btn menu-btn">
+                <li><a href="#contact">Prendre rendez-vous</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <div class="bloc-gauche">
+                <h1 class="title">Bienvenue sur notre Page de Destination</h1>
+                <p>Découvrez nos services et ce que nous avons à offrir.</p>
+                <a href="#about" class="btn">En savoir plus</a>
+            </div>
+        </section>
+        
+        <section id="about">
+            <div class="row">
+                <div class="col-w30">
+                    <h2>À Propos de Nous</h2>
+            <p>Nous sommes une entreprise dédiée à fournir les meilleurs services à nos clients.</p>
+            <p>Notre solution vous aide à gérer vos factures, suivre vos paiements et organiser votre base client en toute simplicité.</p>
+                </div>
+                <div class="col-w50">
+                    <img src="assests/images/About.jpg"  width="600" height="400" alt="Contacter Nous">
+                </div>
+            </div>
+            
+        </section>
+        <!-- Section Service -->
+        <section id="services">
+            <h2 class="tt-h2">Nos Services</h2>
+            <p></p>
+            <div class="container-flex">
+                <div class="service">
+                    <div class="box">
+                        <img src="assests/images/facturer icone.png" width="35px">
+                        <h3> Génération de factures </h3>
+                        <p class="description">Modèles standards, suivi des paiements.</p>
+                    </div>
+                    <div class="box">
+                        <img src="assests/images/notification.png" width="35px">
+                        <h3>Rappels automatiques</h3>
+                        <p class="description">Notifications pour les factures impayées.</p>
+                    </div>
+                    <div class="box">
+                        <img src="assests/images/offre de service.png" width="35px">
+                        <h3>Création d’offres de services</h3>
+                        <p class="description">Génération et export en PDF.</p>
+                    </div>
+                    <div class="box">
+                        <img src="assests/images/gestion-de-la-relation-client.png" width="35px">
+                        <h3>Gestion des clients</h3>
+                        <p class="description">Suivi des performances commerciales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Section Formulaire de contact -->
+        <section id="contact">
+            <h2 class="titre-h2">Contactez-Nous</h2>
+            <div class="row">
+                <div class="col-w50">
+                    <div class="contact-form">
+                        <form action="/action_page.php">
+                          <label for="fname">First Name</label>
+                          <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                      
+                          <label for="lname">Last Name</label>
+                          <input type="text" id="lname" name="lastname" placeholder="Your last name..">                      
+                          <label for="subject">Subject</label>
+                          <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                      
+                          <input type="submit" value="Submit">
+                        </form>
+                      </div>  
+                </div>   
+    
+                <div class="col-w50 img-contact">
+                    <img src="assests/images/contactus.jpg"  width="600" height="400" alt="Contacter Nous">
+                </div> 
+            </div>
+            
+        </section>     
+    </main>
+
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <ul>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-facebook-f icon"></i>    </a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fab fa-twitter icon"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fab fa-linkedin-in icon"></i></a></li>
+                    <li>
+                      <a href="#"><i class="fab fa-google-plus-g icon"></i></a></li>
+                  </ul>
+            </div>
+        </div>        
+        <p class="copyright">&copy; 2025 Votre Entreprise. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
