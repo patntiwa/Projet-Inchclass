@@ -1,0 +1,15 @@
+/* Variables CSS globales pour une meilleure maintenabilité */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --dark-color: #123524;
+    --middle-color: #3E7B27;
+    --color: #85A947;
+    --color-1: #EFE3C2;
+    --color-2: #FFFFFF;
+    --font-family:"Montserrat", serif;
+}
+
+body{
+    font-family: var(--font-family);
+}
