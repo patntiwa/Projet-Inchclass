@@ -1793,6 +1793,10 @@
     border-style: var(--tw-border-style);
     border-width: 2px;
   }
+  .border-50 {
+    border-style: var(--tw-border-style);
+    border-width: 50px;
+  }
   .border-x {
     border-inline-style: var(--tw-border-style);
     border-inline-width: 1px;
@@ -1865,6 +1869,9 @@
   }
   .border-gray-700 {
     border-color: var(--color-gray-700);
+  }
+  .border-green-50 {
+    border-color: var(--color-green-50);
   }
   .border-green-700 {
     border-color: var(--color-green-700);
@@ -3117,10 +3124,24 @@
       }
     }
   }
+  .hover\:bg-green-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-green-600);
+      }
+    }
+  }
   .hover\:bg-green-800 {
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-green-800);
+      }
+    }
+  }
+  .hover\:bg-green-900 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-green-900);
       }
     }
   }
@@ -3219,6 +3240,13 @@
     &:hover {
       @media (hover: hover) {
         color: color-mix(in oklab, var(--color-teal-700) 75%, transparent);
+      }
+    }
+  }
+  .hover\:text-white {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white);
       }
     }
   }
@@ -3576,6 +3604,11 @@
   .md\:gap-8 {
     @media (width >= 48rem) {
       gap: calc(var(--spacing) * 8);
+    }
+  }
+  .md\:p-1\.5 {
+    @media (width >= 48rem) {
+      padding: calc(var(--spacing) * 1.5);
     }
   }
   .md\:p-12 {
