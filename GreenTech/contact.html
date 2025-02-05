@@ -62,7 +62,7 @@
         
         <!-- Form & Image -->
         <section class="mt-5">
-            <div class="flex mx-auto max-w-7xl gap-6">
+            <div class="flex flex-col md:flex-row mx-auto max-w-7xl gap-6">
                 <div class=" w-1/2 p-4">
                     <h2 class="font-bold text-2xl capitalize pb-1.5">Entrer en contact</h2>
                     <p class="pb-1.5 text-gray-500 font-medium">Notre équipe sympathique serait ravie de vous entendre.</p>
@@ -106,22 +106,27 @@
         <!-- Fin Form & Image -->
         
         <!-- info contact -->
-        <section class="flex mx-auto max-w-7xl px-6 lg:px-8 mt-11">
-            <div class="mx-auto gap-3 flex max-w-xs flex-row">
+        <section class="flex flex-col sm:flex-row mx-auto max-w-7xl justify-around px-6 lg:px-8 mt-11 gap-6 sm:gap-3">
+            <!-- Phone Section -->
+            <div class="mx-auto sm:mx-0 gap-3 flex max-w-xs flex-row">
                 <div class="text-5xl text-green-900"><i class="fa-solid fa-phone-volume"></i></div>
                 <div class="flex-col">
                     <p class="text-xl font-bold">Phone</p>
                     <p class="text-green-900">03 5432 1234</p>
                 </div>
             </div>
-            <div class="mx-auto gap-3 flex max-w-xs flex-row">
+        
+            <!-- Fax Section -->
+            <div class="mx-auto sm:mx-0 gap-3 flex max-w-xs flex-row">
                 <div class="text-5xl text-green-900"><i class="fa-solid fa-fax"></i></div>
                 <div class="flex-col">
                     <p class="text-xl font-bold">Fax</p>
                     <p class="text-green-900">03 5432 1234</p>
                 </div>
             </div>
-            <div class="mx-auto gap-3 flex max-w-xs flex-row">
+        
+            <!-- Email Section -->
+            <div class="mx-auto sm:mx-0 gap-3 flex max-w-xs flex-row">
                 <div class="text-5xl text-green-900"><i class="fa-solid fa-envelope-open-text"></i></div>
                 <div class="flex-col">
                     <p class="text-xl font-bold">Email</p>
