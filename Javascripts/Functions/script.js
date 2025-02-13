@@ -66,8 +66,9 @@ function verifierMajorite(age) {
                 alert("Vous êtes majeur");
             }
         }
+        navigation();
     }
-    navigation()
+    
 } 
 
 function verifierParite() {
@@ -83,6 +84,7 @@ function verifierParite() {
             alert(`${nombre} est impair.`);
         }
     }
+    navigation();
 }
 
 // Fonction pour déterminer le mois correspondant à un numéro
@@ -96,6 +98,7 @@ function determinerMois() {
     } else {
         alert("Le mois numéro " + numero + " correspond à " + mois[numero - 1] + ".");
     }
+    navigation();
 }
 
 
