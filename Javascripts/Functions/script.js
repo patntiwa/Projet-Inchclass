@@ -8,59 +8,68 @@ function afficherMenu() {
             "4. Quitter\n" +
             "Entrez le numéro de votre choix :"
         );
-
+        
         if (choix === null) {
             alert("Opération annulée. Au revoir !");
             break;
         }
-
+        
         choix = Number(choix);
-
+        
         switch (choix) {
             case 1:
-                verifierMajorite();
-                break;
+            verifierMajorite();
+            break;
             case 2:
-                verifierParite();
-                break;
+            verifierParite();
+            break;
             case 3:
-                determinerMois();
-                break;
+            determinerMois();
+            break;
             case 4:
-                alert("Merci d'avoir utilisé le programme. Au revoir !");
-                return;
+            alert("Merci d'avoir utilisé le programme. Au revoir !");
+            return;
             default:
-                alert("Choix invalide. Veuillez entrer un numéro entre 1 et 4.");
+            alert("Choix invalide. Veuillez entrer un numéro entre 1 et 4.");
         }
     }
 }
 
-
+// Fonction de navigation pour revenir au menu principal ou quitter
+function navigation() {
+    let choix = confirm("Voulez-vous revenir au menu principal ?\nCliquez sur 'Annuler' pour quitter.");
+    if (choix) {
+        afficherMenu();
+    } else {
+        alert("Merci d'avoir utilisé le programme. Au revoir !");
+    }
+}
 function verifierMajorite(age) {
     while (true) {
-            valeur = prompt("Saisir votre age");
-            
-            age = Number(valeur);
-            
-            if (isNaN(age)) {
-                alert("Ce n'est pas une valeur valide.");
+        valeur = prompt("Saisir votre age");
+        
+        age = Number(valeur);
+        
+        if (isNaN(age)) {
+            alert("Ce n'est pas une valeur valide.");
+            continue;
+        } 
+        else {
+            if(age < 0) {
+                alert("pas de valeur négative s'il vous plait");
                 continue;
             } 
-            else {
-                    if(age < 0) {
-                        alert("pas de valeur négative s'il vous plait");
-                        continue;
-                    } 
-                    else if(age < 18){
-                            alert("Vous êtes mineur");
-                        } 
-                        else{
-                            alert("Vous êtes majeur");
-                        }
-                }
+            else if(age < 18){
+                alert("Vous êtes mineur");
+            } 
+            else{
+                alert("Vous êtes majeur");
+            }
         }
+    }
+    navigation()
 } 
-     
+
 function verifierParite() {
     let saisie = prompt("Veuillez entrer un nombre :");
     let nombre = Number(saisie);
