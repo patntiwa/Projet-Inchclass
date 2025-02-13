@@ -2,8 +2,8 @@ function afficherMenu() {
     while (true) {
         let choix = prompt(
             "Menu des Fonctions :\n" +
-            "1. Calculer la parité d'un nombre\n" +
-            "2. Déterminer la majorité\n" +
+            "1. Déterminer la majorité\n" +
+            "2. Calculer la parité d'un nombre\n" +
             "3. Déterminer le mois correspondant à un numéro\n" +
             "4. Quitter\n" +
             "Entrez le numéro de votre choix :"
