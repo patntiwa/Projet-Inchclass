@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Css Composant </title>
+    <link href="./src/output.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Menu -->
+    <header class="w-full">
+        <nav class="flex justify-between items-center bg-gray-800 p-6 sm:flex-row space-y-4">
+            <div class="flex items">
+                <a href="#" class="text-white text-2xl font-bold">Logo</a>
+            </div>
+            <div class="text-white space-x-4 hidden sm:flex">
+                <a href="#" class="hover:text-blue-500">Home</a>
+                <a href="#" class="hover:text-blue-500">About</a>
+                <a href="#" class="hover:text-blue-500">Services</a>
+                <a href="#" class="hover:text-blue-500">Contact Us</a>
+            </div>
+            <div class="">
+                <button type="" class="text-white rounded-lg bg-blue-500 px-4 py-2 hover:bg-blue-700">
+                    Call us
+                </button>
+            </div>
+        </nav>   
+    </header>
+
+    <!-- banner hero section-->
+
+    <section class="relative w-full min-h-[500px] bg-cover flex flex-col justify-center items-center text-2xl bg-[url(/Img/plein-coup-fille-apprenant-mathe.jpg)]">
+        <!-- Calque d'overlay -->
+        <div class="absolute inset-0 bg-blue-500 opacity-50"></div>
+        
+        <!-- Contenu textuel -->
+        <div class="relative z-10 text-center">
+          <div class="sm:text-5xl text-white font-bold text-3xl">Welcome to Inchclass</div>
+          <div class="text-gray-300 pt-2">Let's build the future</div>
+        </div>
+      </section>
+      
+
+    <!-- Services  -->
+
+    <section class="w-full">
+        <div class="flex flex-col items-center space-y-4 p-4">
+            <div class="text-3xl font-bold text-center">Our Services</div>
+            <div class="text-center text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+        </div>
+        <img src="" alt="">
+    </section>
+</body>
+</html>
