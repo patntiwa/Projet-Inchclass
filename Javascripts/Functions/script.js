@@ -24,24 +24,39 @@ function verifierParite() {
 }
 
 // Fonction pour déterminer le mois correspondant à un numéro
+/**
+ * Fonction qui demande à l'utilisateur d'entrer un numéro de mois (1 à 12),
+ * puis affiche le nom correspondant du mois en français.
+ */
 function determinerMois() {
+    // Demande à l'utilisateur d'entrer un numéro de mois
     const numeroStr = prompt("Entrez un numéro de mois (1 à 12) :");
+
+    // Vérifie si l'utilisateur a annulé l'invite
     if (numeroStr === null) {
-        alert("Arret du programme.");
+        alert("Arrêt du programme.");
         return;
     }
+
+    // Convertit l'entrée de l'utilisateur en nombre
     const numero = Number(numeroStr);
+
+    // Vérifie si l'entrée est un nombre valide entre 1 et 12
     if (isNaN(numero) || numero < 1 || numero > 12) {
         alert("Veuillez entrer un numéro de mois valide entre 1 et 12.");
-    } else {
-        // Crée une date avec le mois choisi (numero - 1 car les mois vont de 0 à 11)
-        const date = new Date(2024, numero - 1, 1);
-        // Obtient le nom du mois en français avec la première lettre en majuscule
-        const mois = date.toLocaleDateString('fr-FR', { month: 'long' });
-        const moisCapitalized = mois.charAt(0).toUpperCase() + mois.slice(1);
-        alert("Le mois numéro " + numero + " correspond à " + moisCapitalized + ".");
+        return;
     }
+
+    // Crée une date avec l'année 2025 et le mois correspondant (les mois sont indexés de 0 à 11)
+    const date = new Date(2025, numero - 1);
+
+    // Obtient le nom complet du mois en français
+    const mois = date.toLocaleDateString('fr-FR', { month: 'long' });
+
+    // Affiche le résultat avec la première lettre du mois en majuscule
+    alert(`Le mois numéro ${numero} correspond à ${mois.charAt(0).toUpperCase() + mois.slice(1)}.`);
 }
+
 
 
 
