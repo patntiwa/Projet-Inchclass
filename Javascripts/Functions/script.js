@@ -3,11 +3,10 @@
 function verifierMajorite() {
     do{
          age = prompt("Saisissez votre âge :");
-    }while(isNaN(age) || age < 0 || age === null)  
+    }while(isNaN(age) || age < 0 || age.trim().lenght === null)  
      alert(age < 18 ? "Vous êtes mineur." : "Vous êtes majeur.");   
 }
 
-verifierMajorite();
 
 // Fonction pour calculer la parité d'un nombre
 function verifierParite() {
@@ -28,17 +27,23 @@ function verifierParite() {
 function determinerMois() {
     const numeroStr = prompt("Entrez un numéro de mois (1 à 12) :");
     if (numeroStr === null) {
-        alert("Opération annulée.");
+        alert("Arret du programme.");
         return;
     }
     const numero = Number(numeroStr);
-    const mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
     if (isNaN(numero) || numero < 1 || numero > 12) {
         alert("Veuillez entrer un numéro de mois valide entre 1 et 12.");
     } else {
-        alert("Le mois numéro " + numero + " correspond à " + mois[numero - 1] + ".");
+        // Crée une date avec le mois choisi (numero - 1 car les mois vont de 0 à 11)
+        const date = new Date(2024, numero - 1, 1);
+        // Obtient le nom du mois en français avec la première lettre en majuscule
+        const mois = date.toLocaleDateString('fr-FR', { month: 'long' });
+        const moisCapitalized = mois.charAt(0).toUpperCase() + mois.slice(1);
+        alert("Le mois numéro " + numero + " correspond à " + moisCapitalized + ".");
     }
 }
+
+
 
 // Fonction pour afficher un nombre de 1 à 10
 
