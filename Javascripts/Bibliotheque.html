@@ -3,122 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bibliotheque Livre</title>
+    <title>Bibliothèque de Livres</title>
+    <link rel="stylesheet" href="src/output.css">
 </head>
-<body>
-    <!DOCTYPE html>
-<html>
-<head>
-    <title>Gestion de livres</title>
-</head>
-<body>
-    <script>
-        // Listes des livres actifs et archivés
-let livresActifs = [];
-let livresArchives = [];
+<body class="bg-linear-60">
 
-// Fonction pour afficher le menu principal et gérer les interactions utilisateur
-function menu() {
-    const choix = prompt(`Choisissez une action :
-1. Ajouter un livre
-2. Rechercher un livre par titre
-3. Afficher les livres triés par titre
-4. Afficher tous les livres
-5. Supprimer un livre
-6. Quitter`);
+    <section class="w-[90%] m-auto justify-center items-center flex p-4">
+        
+        <div class="bg-blue-50 w-full">
 
-    switch (choix) {
-        case '1':
-            ajouterLivre();
-            break;
-        case '2':
-            rechercherLivre();
-            break;
-        case '3':
-            afficherLivresTries();
-            break;
-        case '4':
-            afficherTousLivres();
-            break;
-        case '5':
-            supprimerLivre();
-            break;
-        case '6':
-            alert("Au revoir !");
-            break;
-        default:
-            alert("Choix invalide");
-            menu();
-    }
-}
+            <h1 class="text-3xl text-center pt-9 pb-11 font-extrabold">Gestion de Livres</h1>
 
-// Fonction pour ajouter un nouveau livre à la collection
-function ajouterLivre() {
-    const titre = prompt("Entrez le titre du livre :");
-    const auteur = prompt("Entrez l'auteur du livre :");
-    livresActifs.push({ titre, auteur });
-    alert("Livre ajouté avec succès !");
-    menu();
-}
-
-// Fonction pour rechercher des livres par titre (recherche partielle insensible à la casse)
-function rechercherLivre() {
-    const recherche = prompt("Entrez le titre à rechercher :").toLowerCase();
-    const resultats = livresActifs.filter(livre =>
-        livre.titre.toLowerCase().includes(recherche)
-    );
-
-    if (resultats.length > 0) {
-        alert("Résultats de la recherche :\n" +
-            resultats.map(l => `${l.titre} - ${l.auteur}`).join("\n"));
-    } else {
-        alert("Aucun livre trouvé");
-    }
-    menu();
-}
-
-// Fonction pour afficher les livres triés par ordre alphabétique du titre
-function afficherLivresTries() {
-    const livresTries = [...livresActifs].sort((a, b) =>
-        a.titre.localeCompare(b.titre)
-    );
-    alert("Livres triés par titre :\n" +
-        livresTries.map(l => `${l.titre} - ${l.auteur}`).join("\n"));
-    menu();
-}
-
-// Fonction pour afficher tous les livres non archivés
-function afficherTousLivres() {
-    if (livresActifs.length > 0) {
-        alert("Liste de tous les livres :\n" +
-            livresActifs.map(l => `${l.titre} - ${l.auteur}`).join("\n"));
-    } else {
-        alert("Aucun livre disponible");
-    }
-    menu();
-}
-
-// Fonction pour archiver un livre en le déplaçant vers la liste des archives
-function supprimerLivre() {
-    const titre = prompt("Entrez le titre du livre à supprimer :").toLowerCase();
-    const index = livresActifs.findIndex(livre =>
-        livre.titre.toLowerCase() === titre
-    );
-
-    if (index !== -1) {
-        livresArchives.push(livresActifs.splice(index, 1)[0]);
-        alert("Livre archivé avec succès");
-    } else {
-        alert("Livre non trouvé");
-    }
-    menu();
-}
-
-// Démarrage du programme
-menu();
-
-    </script>
-</body>
-</html>
+            <div class="flex flex-row justify-center space-x-4">
+                <button onclick="ajouterLivre()" class="border-blue-700 shadow pl-3 pr-3 px-4
+                 hover:bg-blue-800 rounded-2xl">Ajouter un livre</button>
+                <button onclick="rechercherLivre()" class="border-blue-700 shadow pl-3 pr-3 px-4
+                 hover:bg-blue-800 rounded-2xl">Rechercher un livre par titre</button>
+                <button onclick="afficherLivresTries()" class="border-blue-700 shadow pl-3 pr-3 px-4
+                 hover:bg-blue-800 rounded-2xl">Afficher les livres triés par titre</button>
+                <button onclick="afficherTousLivres()" class="border-blue-700 shadow pl-3 pr-3 px-4
+                 hover:bg-blue-800 rounded-2xl">Afficher tous les livres</button>
+                <button onclick="supprimerLivre()" class="border-blue-700 shadow pl-3 pr-3 px-4
+                 hover:bg-blue-800 rounded-2xl">Supprimer un livre</button>
+                <button onclick="quitter()" class="border-blue-700 shadow pl-3 pr-3 px-4
+                 hover:bg-blue-800 rounded-2xl">Quitter</button>
+            </div>
+        </div>
+        
+    </section> 
+    <!-- Resultat Affichage -->
+    
+    <section class="w-[90%] mx-auto justify-center items-center flex">
+        <h1 class="text-3xl text-center pb-11">Liste des Livres</h1>
+        <div id="resultat" class="bg-gray-200 p-5"></div>
+    </section>
+    <script src="Functions/biblio.js"></script>
 </body>
 </html>

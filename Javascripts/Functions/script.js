@@ -1,18 +1,13 @@
 
 // Fonction pour déterminer la majorité
 function verifierMajorite() {
-    const valeur = prompt("Saisissez votre âge :");
-    if (valeur === null) {
-        alert("Opération annulée.");
-        return;
-    }
-    const age = Number(valeur);
-    if (isNaN(age) || age < 0) {
-        alert("Veuillez entrer une valeur valide et non négative.");
-        return;
-    }
-    alert(age < 18 ? "Vous êtes mineur." : "Vous êtes majeur.");
+    do{
+         age = prompt("Saisissez votre âge :");
+    }while(isNaN(age) || age < 0 || age === null)  
+     alert(age < 18 ? "Vous êtes mineur." : "Vous êtes majeur.");   
 }
+
+verifierMajorite();
 
 // Fonction pour calculer la parité d'un nombre
 function verifierParite() {
@@ -44,6 +39,8 @@ function determinerMois() {
         alert("Le mois numéro " + numero + " correspond à " + mois[numero - 1] + ".");
     }
 }
+
+// Fonction pour afficher un nombre de 1 à 10
 
 // Fonction principale affichant le menu et gérant la navigation
 function afficherMenu() {
