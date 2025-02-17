@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Bibliothèque</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+    <div class="max-w-2xl mx-auto">
+        <!-- Formulaire d'ajout -->
+        <div class="bg-white rounded-lg shadow p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Ajouter un livre</h2>
+            <form id="bookForm" class="space-y-4">
+                <div>
+                    <input type="text" id="title" placeholder="Titre du livre" 
+                           class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div>
+                    <input type="text" id="author" placeholder="Auteur" 
+                           class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <button type="submit" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
+                    Ajouter le livre
+                </button>
+            </form>
+        </div>
+
+        <!-- Barre de recherche -->
+        <div class="mb-6">
+            <form id="searchForm" class="flex gap-2">
+                <input type="text" id="searchInput" placeholder="Rechercher un livre..." 
+                       class="flex-1 p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="submit" 
+                        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors">
+                    Rechercher
+                </button>
+            </form>
+        </div>
+
+        <!-- Liste des livres -->
+        <div id="bookList" class="space-y-4">
+            <!-- Les livres seront insérés ici -->
+        </div>
+    </div>
+
+    <script src="/Functions/bookManager.js"></script>
+</body>
+</html>
