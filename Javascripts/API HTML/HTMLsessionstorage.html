@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Storage</title>
+    <script>
+        function clickCounter() {
+            if (typeof (Storage) !== "undefined") {
+                if (sessionStorage.clickcount) {
+                    sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+                } else {
+                    sessionStorage.clickcount = 1;
+                }
+                document.getElementById("result").innerHTML = "Vous avez cliqué sur le bouton " + sessionStorage.clickcount + " heure(s) de cette session.";
+            } else {
+                document.getElementById("result").innerHTML = "Désolé, votre navigateur ne prend pas en charge le stockage Web...";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p><button onclick="clickCounter()" type="button">Cliquez sur moi!</button></p>
+    <div id="result"></div>
+    <p>Cliquez sur le bouton pour voir le compteur augmenter.</p>
+    <p>Fermez l'onglet (ou la fenêtre) du navigateur et réessayez, et le compteur est réinitialisé.</p>
+
+</body>
+
+</html>

@@ -14,69 +14,69 @@
             <form id="bookForm" class="space-y-4">
                 <div>
                     <input type="text" id="title" placeholder="Titre du livre" 
-                           class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 <div>
                     <input type="text" id="author" placeholder="Auteur" 
-                           class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 <button type="submit" 
-                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
-                    Ajouter le livre
-                </button>
-            </form>
-        </div>
-
-        <!-- Barre de recherche -->
-        <div class="mb-6">
-            <input type="text" id="search" placeholder="Rechercher un livre..." 
-                   class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-
-        <!-- Liste des livres -->
-        <div id="bookList" class="space-y-4">
-            <!-- Les livres seront insérés ici -->
-        </div>
+                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
+                Ajouter le livre
+            </button>
+        </form>
     </div>
-    <footer class="text-center italic">
-        <a href="https://github.com/patntiwa/Projet-Inchclass/tree/master/Javascripts" class="hover:text-blue-500">Repertoire Git Hub</a>
-    </footer>
-    <script>
-        let books = JSON.parse(localStorage.getItem('books')) || [];
-
-        // Gestion du formulaire
-        document.getElementById('bookForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const title = document.getElementById('title').value.trim();
-            const author = document.getElementById('author').value.trim();
-            
-            if (title && author) {
-                books.push({ title, author, id: Date.now() });
-                localStorage.setItem('books', JSON.stringify(books));
-                renderBooks();
-                e.target.reset();
-            }
-        });
-
-        // Recherche
-        document.getElementById('search').addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filteredBooks = books.filter(book => 
-                book.title.toLowerCase().includes(searchTerm) || 
-                book.author.toLowerCase().includes(searchTerm)
-            );
-            renderBooks(filteredBooks);
-        });
-
-        // Rendu des livres
-        function renderBooks(booksToRender = books) {
-            const bookList = document.getElementById('bookList');
-            bookList.innerHTML = '';
-
-            booksToRender.forEach(book => {
-                const bookElement = document.createElement('div');
-                bookElement.className = 'bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow';
-                bookElement.innerHTML = `
+    
+    <!-- Barre de recherche -->
+    <div class="mb-6">
+        <input type="text" id="search" placeholder="Rechercher un livre..." 
+        class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+    </div>
+    
+    <!-- Liste des livres -->
+    <div id="bookList" class="space-y-4">
+        <!-- Les livres seront insérés ici -->
+    </div>
+</div>
+<footer class="text-center italic">
+    <a href="https://github.com/patntiwa/Projet-Inchclass/tree/master/Javascripts" class="hover:text-blue-500">Repertoire Git Hub</a>
+</footer>
+<script>
+    let books = JSON.parse(localStorage.getItem('books')) || [];
+    
+    // Gestion du formulaire
+    document.getElementById('bookForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const title = document.getElementById('title').value.trim();
+        const author = document.getElementById('author').value.trim();
+        
+        if (title && author) {
+            books.push({ title, author, id: Date.now() });
+            localStorage.setItem('books', JSON.stringify(books));
+            renderBooks();
+            e.target.reset();
+        }
+    });
+    
+    // Recherche
+    document.getElementById('search').addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filteredBooks = books.filter(book => 
+        book.title.toLowerCase().includes(searchTerm) || 
+        book.author.toLowerCase().includes(searchTerm)
+        );
+        renderBooks(filteredBooks);
+    });
+    
+    // Rendu des livres
+    function renderBooks(booksToRender = books) {
+        const bookList = document.getElementById('bookList');
+        bookList.innerHTML = '';
+        
+        booksToRender.forEach(book => {
+            const bookElement = document.createElement('div');
+            bookElement.className = 'bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow';
+            bookElement.innerHTML = `
                     <div class="flex justify-between items-center">
                         <div>
                             <h3 class="text-xl font-semibold">${book.title}</h3>
@@ -88,19 +88,19 @@
                         </button>
                     </div>
                 `;
-                bookList.appendChild(bookElement);
-            });
-        }
-
-        // Suppression
-        window.deleteBook = (id) => {
-            books = books.filter(book => book.id !== id);
-            localStorage.setItem('books', JSON.stringify(books));
-            renderBooks();
-        }
-
-        // Initial render
+            bookList.appendChild(bookElement);
+        });
+    }
+    
+    // Suppression
+    window.deleteBook = (id) => {
+        books = books.filter(book => book.id !== id);
+        localStorage.setItem('books', JSON.stringify(books));
         renderBooks();
-    </script>
+    }
+    
+    // Initial render
+    renderBooks();
+</script>
 </body>
 </html>

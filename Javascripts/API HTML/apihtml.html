@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API-Drag&Drop</title>
+</head>
+
+<body>
+    <div id="draggable" draggable="true">Glissez-moi !</div>
+    <div id="dropzone" style="width:300px; height:200px; border:2px dashed #ccc;">Déposez ici</div>
+    <script>
+        const draggable = document.getElementById('draggable');
+        const dropzone = document.getElementById('dropzone');
+
+        draggable.addEventListener('dragstart', function (e) {
+            e.dataTransfer.setData('text/plain', 'Ceci est glissé');
+        });
+        dropzone.addEventListener('dragover', function (e) {
+            e.preventDefault();
+        });
+        dropzone.addEventListener('drop', function (e) {
+            e.preventDefault();
+            const data = e.dataTransfer.getData('text/plain');
+            dropzone.innerText = "Vous avez déposé : " + data;
+        });
+    </script>
+
+</body>
+
+</html>
