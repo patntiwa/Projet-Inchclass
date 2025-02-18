@@ -1,38 +1,11 @@
-// Fonction Afficher Heure
-
-function afficherHeure(){
-	var date = new Date();
-	console.log(date);
+function getRandomInt(min, max) {
+  // min et max inclus
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Fonction avec parametre
+console.log(getRandomInt(1, 10)); // Affiche un entier entre 1 et 10
 
-
-function maFonction(monObjet) {
-    monObjet.fabricant = "Toyota";
-  }
-  
-  var mavoiture = { fabricant: "Honda", modèle: "Accord", année: 1998 };
-  var nom, style, year;
-  
-  nom = mavoiture.fabricant; // nom aura la valeur "Honda"
-  style = mavoiture.modèle; // style aura la valeur "Accord"
-  year = mavoiture.année; // year aura la valeur "1998"
-
-  console.log(nom);
-  console.log(style);
-  console.log(year);
-
-  maFonction(mavoiture);
-
-  nom = mavoiture.fabricant; // y aura la valeur "Toyota"
-  // (la propriété fabricant a été modifiée par la fonction)
-
-  function direBonjour(prenom){
-	console.log("Bonjour " + prenom);	
-}
-
-direBonjour("Aurélien"); // Affiche "Bonjour Aurélien"
-direBonjour("Julien"); // Affiche "Bonjour Julien"
-direBonjour("Clémence"); // Affiche "Bonjour Clémence"
-direBonjour("Marie"); // Affiche "Bonjour Marie"
+let number = 4.65;
+console.log(Math.floor(number)); // Affiche: 4
+console.log(Math.ceil(number));  // Affiche: 5
+console.log(Math.round(number)); // Affiche: 5
