@@ -1,7 +1,7 @@
 // Stockage persistant
 localStorage.setItem("username", "Alice");
-console.log(localStorage.getItem("username"));
+document.write(localStorage.getItem("username"));
 
 // Stockage pour la session en cours
-sessionStorage.setItem("sessionKey", "123456");
-console.log(sessionStorage.getItem("sessionKey"));
+sessionStorage.setItem("sessionKey", " 123456");
+document.write(sessionStorage.getItem("sessionKey"));
