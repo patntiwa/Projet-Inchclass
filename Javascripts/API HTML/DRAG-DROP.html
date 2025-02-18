@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .dropzone {
+      width: 200px;
+      min-height: 200px;
+      border: 2px dashed #ccc;
+      padding: 10px;
+      background-color: #f9f9f9;
+    }
+
+    .draggable {
+      width: 80px;
+      height: 80px;
+      background-color: #3498db;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 5px;
+      cursor: move;
+      user-select: none;
+    }
+
+    .draggable:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <div class="draggable" draggable="true" ondragstart="drag(event)" id="drag1">
+        Item 1
+      </div>
+      <div class="draggable" draggable="true" ondragstart="drag(event)" id="drag2">
+        Item 2
+      </div>
+      <div class="draggable" draggable="true" ondragstart="drag(event)" id="drag3">
+        Item 3
+      </div>
+    </div>
+
+    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)">
+    </div>
+
+    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)">
+    </div>
+  </div>
+
+  <script>
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("element", ev.target.id);
+      // Ajoute un effet visuel pendant le déplacement
+      ev.target.style.opacity = "0.5";
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      const data = ev.dataTransfer.getData("element");
+      const element = document.getElementById(data);
+
+      // Restaure l'opacité normale
+      element.style.opacity = "1";
+
+      // Vérifie si la zone de dépôt est vide ou contient déjà des éléments
+      const dropzone = ev.target.closest('.dropzone');
+      if (dropzone) {
+        dropzone.appendChild(element);
+      }
+    }
+  </script>
+</body>
+
+</html>
