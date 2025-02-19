@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horloge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .number {
+            transition: transform 0.3s ease;
+        }
+
+        .number:hover {
+            transform: scale(1.1);
+        }
+
+        .clock {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-blue-100 to-purple-100 min-h-screen p-8">
+    <!-- Section Horloge -->
+    <div class="max-w-lg mx-auto mb-10 bg-white rounded-xl shadow-xl p-6">
+        <h1 class="text-2xl font-bold mb-4 text-gray-800">⌚ Horloge Digitale</h1>
+        <input type="text" id="horloge" readonly
+            class="clock w-full text-4xl font-mono text-center bg-gray-900 text-green-400 p-4 rounded-lg shadow-inner"
+            value="00:00:00">
+    </div>
+
+
+    <script>
+
+        // Fonction pour mettre à jour l'horloge
+        function actualiserHeure() {
+            const maintenant = new Date();
+            const heures = String(maintenant.getHours()).padStart(2, '0');
+            const minutes = String(maintenant.getMinutes()).padStart(2, '0');
+            const secondes = String(maintenant.getSeconds()).padStart(2, '0');
+
+            document.getElementById('horloge').value = `${heures}:${minutes}:${secondes}`;
+            setTimeout(actualiserHeure, 1000);
+        }
+
+        // Initialisation
+
+        actualiserHeure();
+    </script>
+</body>
+
+</html>

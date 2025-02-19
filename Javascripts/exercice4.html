@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .number {
+            transition: transform 0.3s ease;
+        }
+        .number:hover {
+            transform: scale(1.1);
+        }
+        .clock {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-blue-100 to-purple-100 min-h-screen p-8">
+
+    <!-- Section Tableau -->
+    <div class="max-w-lg mx-auto bg-white rounded-xl shadow-xl p-6">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">📊 Tableau de Nombres</h2>
+        
+        <!-- Conteneur du tableau -->
+        <div id="tableauContainer" class="mb-6 p-4 bg-gray-50 rounded-lg min-h-[100px]">
+            <!-- Les nombres seront ajoutés ici -->
+        </div>
+
+        <!-- Boutons de contrôle -->
+        <div class="space-x-4">
+            <button onclick="ajouterElement()" 
+                    class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors">
+                ➕ Ajouter
+            </button>
+            <button onclick="supprimerElement()" 
+                    class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg transition-colors">
+                ➖ Supprimer
+            </button>
+            <button onclick="trierTableau()" 
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">
+                🔄 Trier
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Tableau initial
+        let monTableau = [23, 45, 12, 8, 95, 34];
+
+        // Fonction pour afficher le tableau
+        function afficherTableau() {
+            const container = document.getElementById('tableauContainer');
+            container.innerHTML = '';
+            
+            monTableau.forEach((nombre, index) => {
+                const element = document.createElement('span');
+                element.className = 'number inline-block bg-white m-2 px-4 py-2 rounded-lg shadow text-lg font-semibold text-gray-700';
+                element.textContent = nombre;
+                container.appendChild(element);
+            });
+        }
+
+        // Fonction pour ajouter un élément
+        function ajouterElement() {
+            const nouveauNombre = Math.floor(Math.random() * 100);
+            monTableau.push(nouveauNombre);
+            afficherTableau();
+        }
+
+        // Fonction pour supprimer un élément
+        function supprimerElement() {
+            const index = prompt('Entrez l\'index de l\'élément à supprimer (0 à ' + (monTableau.length - 1) + '):');
+            if (index !== null && !isNaN(index) && index >= 0 && index < monTableau.length) {
+                monTableau.splice(index, 1);
+                afficherTableau();
+            }
+        }
+
+        // Fonction pour trier le tableau
+        function trierTableau() {
+            monTableau.sort((a, b) => a - b);
+            afficherTableau();
+        }
+
+        // Initialisation
+        afficherTableau();
+    </script>
+</body>
+</html>
