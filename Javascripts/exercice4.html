@@ -4,27 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau</title>
+    <title>Gestion de Tableau</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .number {
+            transition: transform 0.3s ease;
+        }
+
+        .number:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 
 <body class="bg-gradient-to-r from-blue-100 to-purple-100 min-h-screen p-8">
-
     <!-- Section Tableau -->
     <div class="max-w-lg mx-auto bg-white rounded-xl shadow-xl p-6">
-        <h2 class="text-2xl font-bold mb-4 text-gray-800">📊 Tableau de Nombres</h2>
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">📊 Gestion du Tableau</h2>
+
+        <!-- Zone de saisie -->
+        <div class="mb-4 flex gap-2">
+            <input type="number" id="nouveauNombre" placeholder="Entrez un nombre"
+                class="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <button onclick="ajouterElement()"
+                class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors">
+                ➕ Ajouter
+            </button>
+        </div>
 
         <!-- Conteneur du tableau -->
-        <div id="tableauContainer" class="mb-6 p-4 bg-gray-50 rounded-lg min-h-[100px]">
+        <div id="tableauContainer" class="mb-6 p-4 bg-gray-50 rounded-lg min-h-[100px] flex flex-wrap gap-2">
             <!-- Les nombres seront ajoutés ici -->
         </div>
 
         <!-- Boutons de contrôle -->
         <div class="space-x-4">
-            <button onclick="ajouterElement()"
-                class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors">
-                ➕ Ajouter
-            </button>
             <button onclick="supprimerElement()"
                 class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg transition-colors">
                 ➖ Supprimer
@@ -46,21 +60,40 @@
             container.innerHTML = '';
 
             monTableau.forEach((nombre, index) => {
-                const element = document.createElement('span');
-                element.className = 'number inline-block bg-white m-2 px-4 py-2 rounded-lg shadow text-lg font-semibold text-gray-700';
-                element.textContent = nombre;
+                const element = document.createElement('div');
+                element.className = 'number bg-white px-4 py-2 rounded-lg shadow text-lg font-semibold text-gray-700';
+                element.innerHTML = `
+                    <span>${nombre}</span>
+                    <button onclick="supprimerIndex(${index})" 
+                            class="ml-2 text-red-500 hover:text-red-700">
+                        ×
+                    </button>
+                `;
                 container.appendChild(element);
             });
         }
 
         // Fonction pour ajouter un élément
         function ajouterElement() {
-            const nouveauNombre = Math.floor(Math.random() * 100);
-            monTableau.push(nouveauNombre);
+            const input = document.getElementById('nouveauNombre');
+            const valeur = parseInt(input.value);
+
+            if (!isNaN(valeur)) {
+                monTableau.push(valeur);
+                input.value = ''; // Vider l'input
+                afficherTableau();
+            } else {
+                alert('Veuillez entrer un nombre valide');
+            }
+        }
+
+        // Fonction pour supprimer un élément spécifique
+        function supprimerIndex(index) {
+            monTableau.splice(index, 1);
             afficherTableau();
         }
 
-        // Fonction pour supprimer un élément
+        // Fonction pour supprimer avec prompt
         function supprimerElement() {
             const index = prompt('Entrez l\'index de l\'élément à supprimer (0 à ' + (monTableau.length - 1) + '):');
             if (index !== null && !isNaN(index) && index >= 0 && index < monTableau.length) {
@@ -77,6 +110,13 @@
 
         // Initialisation
         afficherTableau();
+
+        // Écouteur d'événement pour la touche Entrée
+        document.getElementById('nouveauNombre').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                ajouterElement();
+            }
+        });
     </script>
 </body>
 
