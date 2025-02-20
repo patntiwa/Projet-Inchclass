@@ -123,17 +123,22 @@
   </form>
 
   <script>
-    // Vos fonctions de validation existantes
+
+    //Déclaration et récuperations des valeurs de variable
+
+    //fonctions de validation existantes
     function verifiernom() {
       var nom = document.getElementById("c1").value;
       var message = document.getElementById("t2");
 
       if (nom.length < 8 || nom.length > 20) {
         document.getElementById("t2").style.color = "red";
+        document.getElementById("c1").style.borderColor = "red";
         message.innerHTML = "nom invalide. Le nom doit contenir entre 8 et 20 caractères";
         return false;
       } else {
         document.getElementById("t2").style.color = "red";
+        document.getElementById("c1").style.borderColor = "green";
         message.innerHTML = "";
         return true;
       }
@@ -145,10 +150,12 @@
 
       if (adresse.length < 20) {
         document.getElementById("t3").style.color = "red";
+        document.getElementById("c2").style.borderColor = "red";
         message.innerHTML = "Adresse invalide. L'adresse doit contenir au moins 20 caractères";
         return false;
       } else {
         document.getElementById("c2").style.color = "black";
+        document.getElementById("c2").style.borderColor = "green";
         message.innerHTML = "";
         return true;
       }
@@ -161,11 +168,15 @@
 
       if (postal != "3000" && postal != "4000") {
         document.getElementById("t4").style.color = "red";
+        document.getElementById("c4").style.borderColor = "red";
+        document.getElementById("c3").style.borderColor = "red";
         message.innerHTML = "Le code postal doit être 3000 ou 4000";
         localite.value = "";
         return false;
       } else {
         document.getElementById("t4").style.color = "red";
+        document.getElementById("c4").style.borderColor = "green";
+        document.getElementById("c3").style.borderColor = "green";
         message.innerHTML = "";
         localite.value = postal === "3000" ? "ville1" : "ville2";
         return true;
@@ -224,24 +235,26 @@
 
     // Nouvelle fonction pour sauvegarder dans le Local Storage
     function sauvegarderDonnees() {
+      if (forme()) {
+        // Collecter les données du formulaire
+        const formData = {
+          civilite: civilite,
+          nom: document.getElementById("c1").value,
+          adresse: document.getElementById("c2").value,
+          postal: document.getElementById("c3").value,
+          localite: document.getElementById("c4").value,
+          pays: document.getElementById("lepays").value,
+          date: new Date().toISOString()
+        };
 
-      // Collecter les données du formulaire
-      const formData = {
-        civilite: civilite,
-        nom: document.getElementById("c1").value,
-        adresse: document.getElementById("c2").value,
-        postal: document.getElementById("c3").value,
-        localite: document.getElementById("c4").value,
-        pays: document.getElementById("lepays").value,
-        date: new Date().toISOString()
-      };
+        // Sauvegarder dans le Local Storage
+        const id = Date.now().toString();
+        localStorage.setItem("formData_${id}", JSON.stringify(formData));
 
-      // Sauvegarder dans le Local Storage
-      const id = Date.now().toString();
-      localStorage.setItem(`formData_${id}`, JSON.stringify(formData));
+        // Afficher le message de succès
+        alert('Données sauvegardées avec succès !');
 
-      // Afficher le message de succès
-      alert('Données sauvegardées avec succès !');
+      }
 
     }
 
