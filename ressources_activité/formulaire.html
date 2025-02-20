@@ -115,7 +115,7 @@
             <input type="button" value="Vérification formulaire" onclick="forme()">
             <input type="reset" value="Effacer">
             <input type="button" value="Enregistrer" onclick="sauvegarderDonnees()">
-            <input type="button" value="Enregistrer" onclick="sauvegarderDonnees()">
+            <input type="button" value="Récuperer" onclick="recupererdonnees()">
           </th>
         </tr>
       </table>
@@ -221,43 +221,30 @@
         alert("Le formulaire est valide !");
       }
     }
+
     // Nouvelle fonction pour sauvegarder dans le Local Storage
     function sauvegarderDonnees() {
-      if (verifiernom() && verifieradresse() && verifierpostal()) {
-        const civilite = document.querySelector('input[name="civilite"]:checked')?.value;
-        if (!civilite) {
-          alert("Veuillez sélectionner une civilité");
-          return;
-        }
 
-        // Collecter les données du formulaire
-        const formData = {
-          civilite: civilite,
-          nom: document.getElementById("c1").value,
-          adresse: document.getElementById("c2").value,
-          postal: document.getElementById("c3").value,
-          localite: document.getElementById("c4").value,
-          pays: document.getElementById("lepays").value,
-          date: new Date().toISOString()
-        };
+      // Collecter les données du formulaire
+      const formData = {
+        civilite: civilite,
+        nom: document.getElementById("c1").value,
+        adresse: document.getElementById("c2").value,
+        postal: document.getElementById("c3").value,
+        localite: document.getElementById("c4").value,
+        pays: document.getElementById("lepays").value,
+        date: new Date().toISOString()
+      };
 
-        // Sauvegarder dans le Local Storage
-        const id = Date.now().toString();
-        localStorage.setItem(`formData_${id}`, JSON.stringify(formData));
+      // Sauvegarder dans le Local Storage
+      const id = Date.now().toString();
+      localStorage.setItem(`formData_${id}`, JSON.stringify(formData));
 
-        // Afficher le message de succès
-        const successMessage = document.getElementById("successMessage");
-        successMessage.style.display = "block";
-        successMessage.textContent = "Données sauvegardées avec succès !";
+      // Afficher le message de succès
+      alert('Données sauvegardées avec succès !');
 
-        // Cacher le message après 3 secondes
-        setTimeout(() => {
-          successMessage.style.display = "none";
-        }, 3000);
-      } else {
-        alert("Veuillez corriger les erreurs avant de sauvegarder.");
-      }
     }
+
 
     // Votre fonction d'affichage modifiée
     function afficher() {
@@ -275,7 +262,7 @@
         var pays = document.getElementById("lepays").value;
 
         var message = "Récapitulatif :\n\n" +
-          "Bonjour " + civilite + nom + "\n" +
+          "Bonjour " + civilite + " " + nom + "\n" +
           "Votre adresse est  " + adresse + "\n" +
           "Votre Code Postal : " + postal + "\n" +
           "Votre Pays : " + pays + "\n" +
