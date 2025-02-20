@@ -235,26 +235,24 @@
 
     // Nouvelle fonction pour sauvegarder dans le Local Storage
     function sauvegarderDonnees() {
-      if (forme()) {
-        // Collecter les données du formulaire
-        const formData = {
-          civilite: civilite,
-          nom: document.getElementById("c1").value,
-          adresse: document.getElementById("c2").value,
-          postal: document.getElementById("c3").value,
-          localite: document.getElementById("c4").value,
-          pays: document.getElementById("lepays").value,
-          date: new Date().toISOString()
-        };
+      // Collecter les données du formulaire
+      const formData = {
+        civilite: document.querySelector('input[name="civilite"]:checked')?.value,
+        nom: document.getElementById("c1").value,
+        adresse: document.getElementById("c2").value,
+        postal: document.getElementById("c3").value,
+        localite: document.getElementById("c4").value,
+        pays: document.getElementById("lepays").value,
+        date: new Date().toISOString()
+      };
 
-        // Sauvegarder dans le Local Storage
-        const id = Date.now().toString();
-        localStorage.setItem("formData_${id}", JSON.stringify(formData));
+      // Sauvegarder dans le Local Storage
+      const id = Date.now().toString();
+      localStorage.setItem("formData_${id}", JSON.stringify(formData));
 
-        // Afficher le message de succès
-        alert('Données sauvegardées avec succès !');
+      // Afficher le message de succès
+      alert('Données sauvegardées avec succès !');
 
-      }
 
     }
 
