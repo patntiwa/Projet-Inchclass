@@ -10,111 +10,142 @@
 
 <body>
   <form name="f">
-
     <fieldset style="background: #ffffdd ;">
-      <legend id="titre" style="background: #ffff88 ;"><b>client</b></legend>
-
-      <center>
-        <table border="0" cellspacing="0" cellpadding="5" width="100%">
-
+      <legend id="titre" style="background: #ffff88 ;"><strong>Client</strong></legend>
+      <div>
+        <table style="width: 100%; border-collapse: collapse;">
           <tr>
-            <td width="17%"><b>civilité</b>
-            <td width="45%">
-              <input type=radio name=civilite value="mademoiselle">mademoiselle
-              <input type=radio name=civilite value="madame" checked>madame
-              <input type=radio name=civilite value="monsieur">monsieur
-            <td id="t1" width="38%">
-              <input type="text" name="display" size=15 value="">
+            <td style="width: 17%;">
+              <label for="civilite"><strong>Civilité</strong></label>
             </td>
+            <td style="width: 45%;">
+              <input type="radio" id="civiliteMademoiselle" name="civilite" value="mademoiselle">
+              <label for="civiliteMademoiselle">Mademoiselle</label>
+              <input type="radio" id="civiliteMadame" name="civilite" value="madame" checked>
+              <label for="civiliteMadame">Madame</label>
+              <input type="radio" id="civiliteMonsieur" name="civilite" value="monsieur">
+              <label for="civiliteMonsieur">Monsieur</label>
+            </td>
+            <td id="t1" style="width: 38%;">
+              <input type="text" name="display" size="15" value="">
+            </td>
+          </tr>
           <tr>
-            <td><b>nom / prénom</b>
-            <td> <input id="c1" type=text name=nom size=50 maxlength=80 onchange="verifiernom()">
+            <td>
+              <label for="c1"><strong>Nom / Prénom</strong></label>
+            </td>
+            <td>
+              <input id="c1" type="text" name="nom" size="50" maxlength="80" onchange="verifiernom()">
+            </td>
             <td id="t2"></td>
+          </tr>
           <tr>
-            <td><b>adresse</b>
-            <td> <textarea id="c2" name=adresse cols=50 rows=2 wrap=physical onchange="verifieradresse()"></textarea>
-            <td id="t3"></td>
-
-          <tr>
-            <td><b>no postal / localité</b>
-            <td> <input id="c3" type=text name=no_postal size=5 maxlength=4 onchange="verifierpostal()">
-              <input id="c4" type=text name=localite size=20 maxlength=80 value="">
-            <td id="t4"></td>
-          <tr>
-            <td><b>pays</b>
             <td>
-              <select id="lepays" name=pays>
-                <option>tunisie
-                <option>algérie
-                <option selected>maroc
-              </select>
-              <b> ajouter pays</b>
-              <input id="c5" type=text name=monpays size=20 maxlength=80 value="libye">
-              <button type="button" onclick="myfunction()">ajouter pays</button>
-            <td>
-
+              <label for="c2"><strong>Adresse</strong></label>
             </td>
-
-          <tr>
-            <td><b>plateforme(s)</b>
             <td>
-              <input type=checkbox name=materiel value="windows" checked>windows
-              <input type=checkbox name=materiel value="mac" checked>macintosh
-              <input type=checkbox name=materiel value="unix">unix
-            <td></td>
+              <textarea id="c2" name="adresse" cols="50" rows="2" wrap="physical"
+                onchange="verifieradresse()"></textarea>
+            </td>
+            <td id="t3"></td>
+          </tr>
           <tr>
-            <td><b>applications(s)</b>
             <td>
-              <select name=applications size=5 multiple>
-                <option selected>bureautique
-                <option>dao
-                <option>statistiques
-                <option>sgbd
-                <option selected>internet
+              <label for="c3"><strong>No postal / Localité</strong></label>
+            </td>
+            <td>
+              <input id="c3" type="text" name="no_postal" size="5" maxlength="4" onchange="verifierpostal()">
+              <input id="c4" type="text" name="localite" size="20" maxlength="80" value="">
+            </td>
+            <td id="t4"></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="lepays"><strong>Pays</strong></label>
+            </td>
+            <td>
+              <select id="lepays" name="pays">
+                <option>tunisie</option>
+                <option>algérie</option>
+                <option selected>maroc</option>
               </select>
+              <strong>Ajouter pays</strong>
+              <input id="c5" type="text" name="monpays" size="20" maxlength="80" value="libye">
+              <button type="button" onclick="myfunction()">ajouter pays</button>
+            </td>
             <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label><strong>Plateforme(s)</strong></label>
+            </td>
+            <td>
+              <input type="checkbox" id="windows" name="materiel" value="windows" checked>
+              <label for="windows">Windows</label>
+              <input type="checkbox" id="mac" name="materiel" value="mac" checked>
+              <label for="mac">Macintosh</label>
+              <input type="checkbox" id="unix" name="materiel" value="unix">
+              <label for="unix">Unix</label>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label><strong>Applications(s)</strong></label>
+            </td>
+            <td>
+              <select name="applications" size="5" multiple>
+                <option selected>bureautique</option>
+                <option>dao</option>
+                <option>statistiques</option>
+                <option>sgbd</option>
+                <option selected>internet</option>
+              </select>
+            </td>
+            <td></td>
+          </tr>
         </table>
-      </center>
-
+      </div>
     </fieldset>
-
-    <center>
-      <table border="0" cellspacing="0" cellpadding="10" width="95%">
+    <div style="text-align: center;">
+      <table style="width: 95%; border-collapse: collapse;">
         <tr>
           <th>
-            <input type=button value="  soumettre formulaire  " onclick=afficher()>
-            <input type=button value="  vérification formulaire " onclick=forme()>
-            <input type=reset value=" effacer ">
+            <input type="button" value="Soumettre formulaire" onclick="afficher()">
+            <input type="button" value="Vérification formulaire" onclick="forme()">
+            <input type="reset" value="Effacer">
+            <input type="button" value="Enregistrer" onclick="sauvegarderDonnees()">
+            <input type="button" value="Enregistrer" onclick="sauvegarderDonnees()">
+          </th>
+        </tr>
       </table>
-    </center>
-
+    </div>
   </form>
 
   <script>
-    // Fonction de vérification du nom
+    // Vos fonctions de validation existantes
     function verifiernom() {
       var nom = document.getElementById("c1").value;
       var message = document.getElementById("t2");
 
       if (nom.length < 8 || nom.length > 20) {
-        document.getElementById("c1").style.color = "red";
-        message.innerHTML = "Le nom doit contenir entre 8 et 20 caractères";
+        document.getElementById("t2").style.color = "red";
+        message.innerHTML = "nom invalide. Le nom doit contenir entre 8 et 20 caractères";
         return false;
       } else {
-        document.getElementById("c1").style.color = "red";
+        document.getElementById("t2").style.color = "red";
         message.innerHTML = "";
         return true;
       }
     }
 
-    // Fonction de vérification de l'adresse
     function verifieradresse() {
       var adresse = document.getElementById("c2").value;
       var message = document.getElementById("t3");
 
       if (adresse.length < 20) {
-        document.getElementById("c2").style.color = "red";
-        message.innerHTML = "L'adresse doit contenir au moins 20 caractères";
+        document.getElementById("t3").style.color = "red";
+        message.innerHTML = "Adresse invalide. L'adresse doit contenir au moins 20 caractères";
         return false;
       } else {
         document.getElementById("c2").style.color = "black";
@@ -123,32 +154,28 @@
       }
     }
 
-    // Fonction de vérification du code postal
     function verifierpostal() {
       var postal = document.getElementById("c3").value;
       var message = document.getElementById("t4");
       var localite = document.getElementById("c4");
 
       if (postal != "3000" && postal != "4000") {
-        document.getElementById("c3").style.color = "red";
+        document.getElementById("t4").style.color = "red";
         message.innerHTML = "Le code postal doit être 3000 ou 4000";
         localite.value = "";
         return false;
       } else {
-        document.getElementById("c3").style.color = "red";
+        document.getElementById("t4").style.color = "red";
         message.innerHTML = "";
-        // Définir la localité en fonction du code postal
         localite.value = postal === "3000" ? "ville1" : "ville2";
         return true;
       }
     }
 
-    // Fonction pour ajouter un pays
     function myfunction() {
       var nouveauPays = document.getElementById("c5").value.trim();
       var listePays = document.getElementById("lepays");
 
-      // Vérifier si le pays existe déjà
       for (var i = 0; i < listePays.options.length; i++) {
         if (listePays.options[i].value.toLowerCase() === nouveauPays.toLowerCase()) {
           alert("Ce pays existe déjà dans la liste !");
@@ -156,13 +183,11 @@
         }
       }
 
-      // Ajouter le nouveau pays
       var option = document.createElement("option");
       option.text = nouveauPays;
       listePays.add(option);
-      document.getElementById("c5").value = ""; // Vider le champ
+      document.getElementById("c5").value = "";
     }
-
     // Fonction de vérification du formulaire complet
     function forme() {
       var isValid = true;
@@ -196,11 +221,53 @@
         alert("Le formulaire est valide !");
       }
     }
+    // Nouvelle fonction pour sauvegarder dans le Local Storage
+    function sauvegarderDonnees() {
+      if (verifiernom() && verifieradresse() && verifierpostal()) {
+        const civilite = document.querySelector('input[name="civilite"]:checked')?.value;
+        if (!civilite) {
+          alert("Veuillez sélectionner une civilité");
+          return;
+        }
 
-    // Fonction pour afficher les données du formulaire
+        // Collecter les données du formulaire
+        const formData = {
+          civilite: civilite,
+          nom: document.getElementById("c1").value,
+          adresse: document.getElementById("c2").value,
+          postal: document.getElementById("c3").value,
+          localite: document.getElementById("c4").value,
+          pays: document.getElementById("lepays").value,
+          date: new Date().toISOString()
+        };
+
+        // Sauvegarder dans le Local Storage
+        const id = Date.now().toString();
+        localStorage.setItem(`formData_${id}`, JSON.stringify(formData));
+
+        // Afficher le message de succès
+        const successMessage = document.getElementById("successMessage");
+        successMessage.style.display = "block";
+        successMessage.textContent = "Données sauvegardées avec succès !";
+
+        // Cacher le message après 3 secondes
+        setTimeout(() => {
+          successMessage.style.display = "none";
+        }, 3000);
+      } else {
+        alert("Veuillez corriger les erreurs avant de sauvegarder.");
+      }
+    }
+
+    // Votre fonction d'affichage modifiée
     function afficher() {
       if (verifiernom() && verifieradresse() && verifierpostal()) {
-        var civilite = document.querySelector('input[name="civilite"]:checked').value;
+        var civilite = document.querySelector('input[name="civilite"]:checked')?.value;
+        if (!civilite) {
+          alert("Veuillez sélectionner une civilité");
+          return;
+        }
+
         var nom = document.getElementById("c1").value;
         var adresse = document.getElementById("c2").value;
         var postal = document.getElementById("c3").value;
@@ -208,12 +275,11 @@
         var pays = document.getElementById("lepays").value;
 
         var message = "Récapitulatif :\n\n" +
-          "Civilité : " + civilite + "\n" +
-          "Nom/Prénom : " + nom + "\n" +
-          "Adresse : " + adresse + "\n" +
-          "Code Postal : " + postal + "\n" +
-          "Localité : " + localite + "\n" +
-          "Pays : " + pays;
+          "Bonjour " + civilite + nom + "\n" +
+          "Votre adresse est  " + adresse + "\n" +
+          "Votre Code Postal : " + postal + "\n" +
+          "Votre Pays : " + pays + "\n" +
+          "Votre Localité : " + localite;
 
         alert(message);
       } else {
