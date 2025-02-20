@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire Activité</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <form name="f">
+
+    <fieldset style="background: #ffffdd ;">
+      <legend id="titre" style="background: #ffff88 ;"><b>client</b></legend>
+
+      <center>
+        <table border="0" cellspacing="0" cellpadding="5" width="100%">
+
+          <tr>
+            <td width="17%"><b>civilité</b>
+            <td width="45%">
+              <input type=radio name=civilite value="mademoiselle">mademoiselle
+              <input type=radio name=civilite value="madame" checked>madame
+              <input type=radio name=civilite value="monsieur">monsieur
+            <td id="t1" width="38%">
+              <input type="text" name="display" size=15 value="">
+            </td>
+          <tr>
+            <td><b>nom / prénom</b>
+            <td> <input id="c1" type=text name=nom size=50 maxlength=80 onchange="verifiernom()">
+            <td id="t2"></td>
+          <tr>
+            <td><b>adresse</b>
+            <td> <textarea id="c2" name=adresse cols=50 rows=2 wrap=physical onchange="verifieradresse()"></textarea>
+            <td id="t3"></td>
+
+          <tr>
+            <td><b>no postal / localité</b>
+            <td> <input id="c3" type=text name=no_postal size=5 maxlength=4 onchange="verifierpostal()">
+              <input id="c4" type=text name=localite size=20 maxlength=80 value="">
+            <td id="t4"></td>
+          <tr>
+            <td><b>pays</b>
+            <td>
+              <select id="lepays" name=pays>
+                <option>tunisie
+                <option>algérie
+                <option selected>maroc
+              </select>
+              <b> ajouter pays</b>
+              <input id="c5" type=text name=monpays size=20 maxlength=80 value="libye">
+              <button type="button" onclick="myfunction()">ajouter pays</button>
+            <td>
+
+            </td>
+
+          <tr>
+            <td><b>plateforme(s)</b>
+            <td>
+              <input type=checkbox name=materiel value="windows" checked>windows
+              <input type=checkbox name=materiel value="mac" checked>macintosh
+              <input type=checkbox name=materiel value="unix">unix
+            <td></td>
+          <tr>
+            <td><b>applications(s)</b>
+            <td>
+              <select name=applications size=5 multiple>
+                <option selected>bureautique
+                <option>dao
+                <option>statistiques
+                <option>sgbd
+                <option selected>internet
+              </select>
+            <td></td>
+        </table>
+      </center>
+
+    </fieldset>
+
+    <center>
+      <table border="0" cellspacing="0" cellpadding="10" width="95%">
+        <tr>
+          <th>
+            <input type=button value="  soumettre formulaire  " onclick=afficher()>
+            <input type=button value="  vérification formulaire " onclick=forme()>
+            <input type=reset value=" effacer ">
+      </table>
+    </center>
+
+  </form>
+
+  <script>
+    // Fonction de vérification du nom
+    function verifiernom() {
+      var nom = document.getElementById("c1").value;
+      var message = document.getElementById("t2");
+
+      if (nom.length < 8 || nom.length > 20) {
+        document.getElementById("c1").style.color = "red";
+        message.innerHTML = "Le nom doit contenir entre 8 et 20 caractères";
+        return false;
+      } else {
+        document.getElementById("c1").style.color = "red";
+        message.innerHTML = "";
+        return true;
+      }
+    }
+
+    // Fonction de vérification de l'adresse
+    function verifieradresse() {
+      var adresse = document.getElementById("c2").value;
+      var message = document.getElementById("t3");
+
+      if (adresse.length < 20) {
+        document.getElementById("c2").style.color = "red";
+        message.innerHTML = "L'adresse doit contenir au moins 20 caractères";
+        return false;
+      } else {
+        document.getElementById("c2").style.color = "black";
+        message.innerHTML = "";
+        return true;
+      }
+    }
+
+    // Fonction de vérification du code postal
+    function verifierpostal() {
+      var postal = document.getElementById("c3").value;
+      var message = document.getElementById("t4");
+      var localite = document.getElementById("c4");
+
+      if (postal != "3000" && postal != "4000") {
+        document.getElementById("c3").style.color = "red";
+        message.innerHTML = "Le code postal doit être 3000 ou 4000";
+        localite.value = "";
+        return false;
+      } else {
+        document.getElementById("c3").style.color = "red";
+        message.innerHTML = "";
+        // Définir la localité en fonction du code postal
+        localite.value = postal === "3000" ? "ville1" : "ville2";
+        return true;
+      }
+    }
+
+    // Fonction pour ajouter un pays
+    function myfunction() {
+      var nouveauPays = document.getElementById("c5").value.trim();
+      var listePays = document.getElementById("lepays");
+
+      // Vérifier si le pays existe déjà
+      for (var i = 0; i < listePays.options.length; i++) {
+        if (listePays.options[i].value.toLowerCase() === nouveauPays.toLowerCase()) {
+          alert("Ce pays existe déjà dans la liste !");
+          return;
+        }
+      }
+
+      // Ajouter le nouveau pays
+      var option = document.createElement("option");
+      option.text = nouveauPays;
+      listePays.add(option);
+      document.getElementById("c5").value = ""; // Vider le champ
+    }
+
+    // Fonction de vérification du formulaire complet
+    function forme() {
+      var isValid = true;
+      var messages = [];
+
+      // Vérifier la civilité
+      if (!document.querySelector('input[name="civilite"]:checked')) {
+        messages.push("Veuillez sélectionner une civilité");
+        isValid = false;
+      }
+
+      // Vérifier nom
+      if (!verifiernom()) {
+        isValid = false;
+      }
+
+      // Vérifier adresse
+      if (!verifieradresse()) {
+        isValid = false;
+      }
+
+      // Vérifier code postal
+      if (!verifierpostal()) {
+        isValid = false;
+      }
+
+      // Afficher le résultat
+      if (!isValid) {
+        alert("Le formulaire contient des erreurs. Veuillez les corriger.");
+      } else {
+        alert("Le formulaire est valide !");
+      }
+    }
+
+    // Fonction pour afficher les données du formulaire
+    function afficher() {
+      if (verifiernom() && verifieradresse() && verifierpostal()) {
+        var civilite = document.querySelector('input[name="civilite"]:checked').value;
+        var nom = document.getElementById("c1").value;
+        var adresse = document.getElementById("c2").value;
+        var postal = document.getElementById("c3").value;
+        var localite = document.getElementById("c4").value;
+        var pays = document.getElementById("lepays").value;
+
+        var message = "Récapitulatif :\n\n" +
+          "Civilité : " + civilite + "\n" +
+          "Nom/Prénom : " + nom + "\n" +
+          "Adresse : " + adresse + "\n" +
+          "Code Postal : " + postal + "\n" +
+          "Localité : " + localite + "\n" +
+          "Pays : " + pays;
+
+        alert(message);
+      } else {
+        alert("Veuillez corriger les erreurs avant de soumettre le formulaire.");
+      }
+    }
+  </script>
+</body>
+
+</html>
