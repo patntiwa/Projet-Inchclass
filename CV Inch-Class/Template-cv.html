@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Développeur Frontend</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f3f4f6;
+        }
+        
+        .cv-container {
+            width: 210mm;  /* Format A4 */
+            height: 297mm;  /* Format A4 */
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            overflow: hidden;
+            page-break-after: always;
+        }
+        
+        .left-column {
+            width: 70mm;
+            height: 100%;
+            background-color: #111827;
+            color: white;
+            padding: 20mm 10mm;
+        }
+        
+        .right-column {
+            width: 140mm;
+            height: 100%;
+            padding: 20mm 15mm;
+            overflow-y: auto;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cv-container">
+        <!-- Colonne gauche (Infos personnelles, compétences) -->
+        <div class="left-column">
+            <div style="text-align: center;">
+                <img src="https://placehold.co/600x400" alt="Photo de profil"
+                    style="width: 80px; height: 80px; border-radius: 9999px; margin: 0 auto 16px auto;">
+                <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 4px;">Alfred Bernard</h2>
+                <p style="font-size: 14px; color: #d1d5db; margin-top: 0;">Développeur Frontend</p>
+            </div>
+            <div style="margin-top: 24px;">
+                <h3 style="font-size: 18px; font-weight: 600; border-bottom: 1px solid #374151; padding-bottom: 4px;">Coordonnées</h3>
+                <p style="font-size: 14px; margin-top: 8px;">📍 Paris, France</p>
+                <p style="font-size: 14px; margin-top: 4px;">✉️ hello@reallygreatsite.com</p>
+                <p style="font-size: 14px; margin-top: 4px;">📞 +123-456-7890</p>
+                <p style="font-size: 14px; margin-top: 4px;">🌐 www.reallygreatsite.com</p>
+            </div>
+            <div style="margin-top: 24px;">
+                <h3 style="font-size: 18px; font-weight: 600; border-bottom: 1px solid #374151; padding-bottom: 4px;">Compétences</h3>
+                <ul style="font-size: 14px; margin-top: 8px; padding-left: 0;">
+                    <li style="margin-bottom: 4px;">HTML, CSS, JavaScript</li>
+                    <li style="margin-bottom: 4px;">React, Vue.js, Tailwind</li>
+                    <li style="margin-bottom: 4px;">Git, GitHub, CI/CD</li>
+                    <li style="margin-bottom: 4px;">UX/UI Design</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Colonne droite (Expériences, formations) -->
+        <div class="right-column">
+            <h3 style="font-size: 20px; font-weight: 600; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 8px;">Expériences professionnelles</h3>
+            <div style="margin-top: 16px;">
+                <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">Développeur Full Stack</h4>
+                <p style="font-size: 14px; color: #6b7280; margin-top: 0;">Messagem, Paris, France | 2017 - Présent</p>
+                <ul style="list-style-type: disc; padding-left: 20px; font-size: 14px; color: #374151; margin-top: 8px;">
+                    <li>Développement et maintenance d'applications web.</li>
+                    <li>Optimisation des performances et correction des bugs.</li>
+                    <li>Collaboration avec les équipes UX/UI.</li>
+                </ul>
+            </div>
+            <div style="margin-top: 16px;">
+                <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">Administrateur Système et Réseau</h4>
+                <p style="font-size: 14px; color: #6b7280; margin-top: 0;">Audio Stream, Lyon, France | 2013 - 2017</p>
+                <ul style="list-style-type: disc; padding-left: 20px; font-size: 14px; color: #374151; margin-top: 8px;">
+                    <li>Gestion des infrastructures réseaux et serveurs.</li>
+                    <li>Mise en place de solutions de sécurité.</li>
+                </ul>
+            </div>
+            <h3 style="font-size: 20px; font-weight: 600; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 8px; margin-top: 24px;">Formations</h3>
+            <div style="margin-top: 16px;">
+                <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">Master en Informatique</h4>
+                <p style="font-size: 14px; color: #6b7280; margin-top: 0;">École Amédé Autran, Paris | 2010 - 2012</p>
+            </div>
+            <div style="margin-top: 16px;">
+                <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">Licence en Informatique</h4>
+                <p style="font-size: 14px; color: #6b7280; margin-top: 0;">École Amédé Autran, Paris | 2007 - 2010</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
