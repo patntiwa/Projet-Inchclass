@@ -85,7 +85,7 @@
                             foreach ($nombresTries as $key => $valeur):
                             ?>
                                 <tr class="hover:bg-gray-50">
-                                    <td class="border p-2 text-center"><?php echo $key + 1; ?></td>
+                                    <td class="border p-2 text-center"><?php echo $key; ?></td>
                                     <td class="border p-2 text-center"><?php echo $valeur; ?></td>
                                 </tr>
                             <?php endforeach; ?>
