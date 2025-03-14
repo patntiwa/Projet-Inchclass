@@ -19,7 +19,6 @@
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
-            padding: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -299,6 +298,8 @@
             $tableau = [
                 ['nom' => 'Mariam', 'age' => 20],
                 ['nom' => 'Emmanuel', 'age' => 24],
+                ['nom' => 'Carelle', 'age' => 26],
+                ['nom' => 'Josi', 'age' => 28],
                 ['nom' => 'Ange', 'age' => 22]
             ];
             genererTableau($tableau);

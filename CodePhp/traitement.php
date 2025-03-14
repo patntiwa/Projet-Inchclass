@@ -5,10 +5,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<p>Question 2 : Traitement des données POST</p>";
     echo "<p> Nom : $nom </p>";
     echo "<p> Email : $email </p>";
-    echo "<script> alert('Formulaire soumis avec succès !');</script>";
-
-    var_dump($nom);
-    var_dump($email);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -17,7 +13,4 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $email = $_GET["email"];
     echo "<p> Nom : $nom </p>";
     echo "<p> Email : $email </p>";
-
-    var_dump($nom);
-    var_dump($email);
 }
