@@ -1,0 +1,47 @@
+/* This file contains custom styles for the project, which can be enhanced using Tailwind CSS classes. */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9fafb; /* Light background */
+    color: #374151; /* Dark text color */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #1f2937; /* Darker text for headings */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3b82f6; /* Blue background */
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #2563eb; /* Darker blue on hover */
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.code {
+    background-color: #f3f4f6; /* Light gray for code blocks */
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}

@@ -1,0 +1,16 @@
+{
+  "name": "php-oop-tutorial",
+  "version": "1.0.0",
+  "description": "A tutorial project to explain the concept of magic methods in PHP and the fundamentals of Object-Oriented Programming (OOP) using Tailwind CSS.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss build src/public/styles/main.css -o src/public/styles/output.css",
+    "watch": "tailwindcss build src/public/styles/main.css -o src/public/styles/output.css --watch"
+  },
+  "dependencies": {
+    "tailwindcss": "^2.2.19"
+  },
+  "devDependencies": {},
+  "author": "Your Name",
+  "license": "MIT"
+}
