@@ -4,7 +4,11 @@
     <div class="bg-white rounded-lg shadow-md p-6">
         <h1 class="text-3xl font-bold mb-6">Bienvenue sur notre site</h1>
 
-        <?php if (isset($isLoggedIn) && $isLoggedIn): ?>
+        <?php
+        if (!isset($username)) {
+            $username = '';
+        }
+        if (isset($isLoggedIn) && $isLoggedIn): ?>
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
                 <p>Bonjour <?php echo htmlspecialchars($username); ?> !</p>
             </div>

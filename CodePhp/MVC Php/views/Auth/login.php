@@ -3,7 +3,11 @@
 <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
     <h2 class="text-2xl font-bold mb-6 text-center">Connexion</h2>
 
-    <?php if (!empty($errors)): ?>
+    <?php
+    if (!isset($errors)) {
+        $errors = [];
+    }
+    if (!empty($errors)): ?>
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
             <?php foreach ($errors as $error): ?>
                 <p><?php echo $error; ?></p>

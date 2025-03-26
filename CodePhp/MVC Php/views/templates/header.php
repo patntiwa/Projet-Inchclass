@@ -16,7 +16,11 @@
             <nav>
                 <ul class="flex space-x-4">
                     <li><a href="/" class="hover:underline">Accueil</a></li>
-                    <?php if (isset($isLoggedIn) && $isLoggedIn): ?>
+                    <?php
+                    if (!isset($isLoggedIn)) {
+                        $isLoggedIn = false;
+                    }
+                    if ($isLoggedIn): ?>
                         <li><a href="/logout" class="hover:underline">Déconnexion</a></li>
                     <?php else: ?>
                         <li><a href="/login" class="hover:underline">Connexion</a></li>

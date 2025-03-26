@@ -3,7 +3,11 @@
 <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
     <h2 class="text-2xl font-bold mb-6 text-center">Inscription</h2>
 
-    <?php if (!empty($errors)): ?>
+    <?php
+    if (!isset($errors)) {
+        $errors = [];
+    }
+    if (!empty($errors)): ?>
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
             <?php foreach ($errors as $error): ?>
                 <p><?php echo $error; ?></p>
@@ -17,7 +21,7 @@
                 Nom d'utilisateur
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                   id="username" type="text" name="username" required>
+                id="username" type="text" name="username" required>
         </div>
 
         <div class="mb-4">
@@ -25,7 +29,7 @@
                 Email
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                   id="email" type="email" name="email" required>
+                id="email" type="email" name="email" required>
         </div>
 
         <div class="mb-4">
@@ -33,7 +37,7 @@
                 Mot de passe
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                   id="password" type="password" name="password" required>
+                id="password" type="password" name="password" required>
         </div>
 
         <div class="mb-6">
@@ -41,11 +45,11 @@
                 Confirmer le mot de passe
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                   id="confirm_password" type="password" name="confirm_password" required>
+                id="confirm_password" type="password" name="confirm_password" required>
         </div>
 
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-                type="submit">
+            type="submit">
             S'inscrire
         </button>
     </form>

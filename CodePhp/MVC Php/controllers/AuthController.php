@@ -13,10 +13,10 @@ class AuthController
     {
         // Connexion à la base de données
         $database = new Database();
-        $db = $database->getConnection();
+        $this->db = $database->getConnection();
 
         // Initialisation du modèle User
-        $this->user = new User($db);
+        $this->user = new User($this->db);
     }
 
     // Afficher la page de connexion

@@ -2,14 +2,16 @@
 
 // config/Database.php
 
-class Database {
+class Database
+{
     private $host = "localhost";
-    private $dbName = "auth_system";
+    private $dbName = "auth_systeme";
     private $username = "root";
     private $password = "";
     private $conn;
 
-    public function getConnection() {
+    public function getConnection()
+    {
         $this->conn = null;
 
         try {
@@ -20,7 +22,7 @@ class Database {
             );
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->conn->exec("set names utf8");
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             echo "Erreur de connexion: " . $e->getMessage();
         }
 
