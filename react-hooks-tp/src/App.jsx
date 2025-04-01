@@ -4,6 +4,7 @@ import { CartProvider } from "./context/CartContext";
 import Cart from "./components/Cart";
 import Clock from "./components/Clock";
 import PostList from "./components/PostList";
+import './index.css'; 
 
 function App() {
     return (
