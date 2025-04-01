@@ -1,16 +1,24 @@
-import { createContext, useReducer, useContext } from "react";
-import { cartReducer } from "./CartReducer";
+import { useCart } from "../context/CartContext";
 
-const CartContext = createContext();
-
-export const CartProvider = ({ children }) => {
-    const [cart, dispatch] = useReducer(cartReducer, []);
+const Cart = () => {
+    const { cart, dispatch } = useCart();
 
     return (
-        <CartContext.Provider value={{ cart, dispatch }}>
-            {children}
-        </CartContext.Provider>
+        <div>
+            <h2>Panier</h2>
+            <ul>
+                {cart.map((item, index) => (
+                    <li key={index}>
+                        {item.name} - {item.price}€
+                        <button onClick={() => dispatch({ type: "REMOVE_ITEM", payload: item.id })}>
+                            Supprimer
+                        </button>
+                    </li>
+                ))}
+            </ul>
+            <button onClick={() => dispatch({ type: "CLEAR_CART" })}>Vider le panier</button>
+        </div>
     );
 };
 
-export const useCart = () => useContext(CartContext);
+export default Cart;

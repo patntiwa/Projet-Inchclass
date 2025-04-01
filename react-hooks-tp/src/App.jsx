@@ -1,9 +1,9 @@
-import { AuthProvider } from "./AuthContext";
-import LoginButton from "./LoginButton";
-import { CartProvider } from "./CartContext";
-import Cart from "./Cart";
-import Clock from "./Clock";
-import PostList from "./PostList";
+import { AuthProvider } from "./context/AuthContext";
+import LoginButton from "./components/LoginButton";
+import { CartProvider } from "./context/CartContext";
+import Cart from "./components/Cart";
+import Clock from "./components/Clock";
+import PostList from "./components/PostList";
 
 function App() {
     return (
