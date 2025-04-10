@@ -42,7 +42,7 @@ Clonez le dépôt dans votre environnement local :
 git clone https://github.com/votre-utilisateur/votre-repo.git
 cd votre-repo
 
-Étape 2 : Installation du backend (Laravel)
+### Étape 2 : Installation du backend (Laravel)
 
 Accédez au dossier Laravel :
 cd todo-api
@@ -67,7 +67,7 @@ php artisan migrate
 6.Lancez le serveur de développement Laravel :
 php artisan serve
 
-Étape 3 : Installation du frontend (React)
+### Étape 3 : Installation du frontend (React)
 cd ../todo-vue
 
 Installez les dépendances Node.js :
@@ -118,38 +118,45 @@ Avant de commencer, assurez-vous d'avoir installé les outils suivants :
 Clonez le dépôt dans votre environnement local :
 
 ```bash
-git clone https://github.com/votre-utilisateur/votre-repo.git
+git clone https://github.com/patntiwa/Projet-Inchclass.git
 cd votre-repo
 ```
+
+ensuite vous cherchez le dossier React+Laravel
 
 ### Étape 2 : Installation du backend (Laravel)
 
 1. Accédez au dossier Laravel :
+
    ```bash
    cd todo-api
    ```
 
 2. Installez les dépendances PHP avec Composer :
+
    ```bash
    composer install
    ```
 
 3. Configurez le fichier `.env` :
    - Copiez le fichier `.env.example` en `.env` :
+
      ```bash
      cp .env.example .env
      ```
    - Configurez les informations de connexion à la base de données dans le fichier `.env` :
+
      ```env
      DB_CONNECTION=mysql
      DB_HOST=127.0.0.1
      DB_PORT=3306
-     DB_DATABASE=nom_de_la_base
-     DB_USERNAME=nom_utilisateur
-     DB_PASSWORD=mot_de_passe
+     DB_DATABASE=todo-app
+     DB_USERNAME=patrick
+     DB_PASSWORD=
      ```
 
 4. Générez la clé d'application Laravel :
+
    ```bash
    php artisan key:generate
    ```
@@ -254,7 +261,7 @@ Vous pouvez utiliser deux terminaux pour lancer les serveurs Laravel et React si
 
 ---
 
-## Auteurs
+## Auteurs : Patrick Ntiwa
 
 - **Frontend** : React Developer
 - **Backend** : Laravel Developer
@@ -265,33 +272,3 @@ Vous pouvez utiliser deux terminaux pour lancer les serveurs Laravel et React si
 
 Ce projet est sous licence MIT. Vous êtes libre de l'utiliser, de le modifier et de le distribuer.
 ```
-
----
-
-### Instructions supplémentaires
-
-1. **Personnalisez le fichier** :
-   - Remplacez `votre-utilisateur/votre-repo` par l'URL de votre dépôt GitHub.
-   - Ajoutez des informations spécifiques à votre projet si nécessaire.
-
-2. **Ajoutez des captures d'écran** :
-   - Vous pouvez inclure des captures d'écran de l'application dans le fichier `README.md` pour illustrer son fonctionnement.
-
-3. **Testez la procédure** :
-   - Suivez les étapes d'installation sur une machine propre pour vérifier que tout fonctionne correctement.
-
-Si vous avez besoin d'aide pour d'autres parties du projet, faites-le-moi savoir !---
-
-### Instructions supplémentaires
-
-1. **Personnalisez le fichier** :
-   - Remplacez `votre-utilisateur/votre-repo` par l'URL de votre dépôt GitHub.
-   - Ajoutez des informations spécifiques à votre projet si nécessaire.
-
-2. **Ajoutez des captures d'écran** :
-   - Vous pouvez inclure des captures d'écran de l'application dans le fichier `README.md` pour illustrer son fonctionnement.
-
-3. **Testez la procédure** :
-   - Suivez les étapes d'installation sur une machine propre pour vérifier que tout fonctionne correctement.
-
-Si vous avez besoin d'aide pour d'autres parties du projet, faites-le-moi savoir !
