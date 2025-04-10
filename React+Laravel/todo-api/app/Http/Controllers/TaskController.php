@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Task;
-use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests; // Import du trait AuthorizesRequests
 
 class TaskController extends Controller
+
 {
+    use AuthorizesRequests; // Inclusion du trait pour utiliser authorize()
     /**
      * Afficher toutes les tâches de l'utilisateur authentifié.
      */
