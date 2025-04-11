@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TaskItem from './TaskItem';
 import TaskForm from './TaskForm';
+import Popup from './Popup'; // Import du composant Popup
 
 export default function TaskList() {
   const [tasks, setTasks] = useState([]);
   const [editTask, setEditTask] = useState(null);
-
-
+  const [taskToDelete, setTaskToDelete] = useState(null); // État pour gérer la tâche à supprimer
 
   const token = localStorage.getItem('token');
 
@@ -39,6 +39,17 @@ export default function TaskList() {
     fetchTasks();
   };
 
+  const confirmDelete = () => {
+    if (taskToDelete) {
+      deleteTask(taskToDelete.id); // Supprime la tâche sélectionnée
+      setTaskToDelete(null); // Réinitialise l'état
+    }
+  };
+
+  const cancelDelete = () => {
+    setTaskToDelete(null); // Annule la suppression
+  };
+
   const toggleTask = async (id) => {
     await axios.patch(`http://127.0.0.1:8000/api/tasks/${id}/toggle`, {}, {
       headers: { Authorization: `Bearer ${token}` }
@@ -51,17 +62,29 @@ export default function TaskList() {
   }, []);
 
   return (
-    <div>
-      <TaskForm onSave={saveTask} taskToEdit={editTask} />
+    <div className="py-4">
+    <TaskForm onSave={saveTask} taskToEdit={editTask} onCancelEdit={() => setEditTask(null)} /> {/* Ajout de onCancelEdit ici aussi */}
+
+    {/* Ajout d'un espacement au-dessus de la liste des tâches */}
+    <div className="mt-6">
       {tasks.map((task) => (
         <TaskItem
           key={task.id}
           task={task}
           onToggle={toggleTask}
           onEdit={setEditTask}
-          onDelete={deleteTask}
+          onDelete={() => setTaskToDelete(task)}
         />
       ))}
     </div>
+
+    {taskToDelete && (
+      <Popup
+        message={`Voulez-vous vraiment supprimer la tâche "${taskToDelete.title}" ?`} // Message plus spécifique
+        onConfirm={confirmDelete}
+        onCancel={cancelDelete}
+      />
+    )}
+  </div>
   );
 }
