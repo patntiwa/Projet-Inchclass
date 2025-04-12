@@ -10,7 +10,12 @@ class Task extends Model
     use HasFactory;
 
     // Attributs modifiables en masse
-    protected $fillable = ['title', 'completed', 'user_id'];
+    protected $fillable = [
+        'title', 
+        'description',
+        'completed', 
+        'user_id'
+    ];
 
     /**
      * Relation : une tâche appartient à un utilisateur.

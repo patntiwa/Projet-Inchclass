@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Task;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests; // Import du trait AuthorizesRequests
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class TaskController extends Controller
-
 {
-    use AuthorizesRequests; // Inclusion du trait pour utiliser authorize()
+    use AuthorizesRequests;
+    
     /**
      * Afficher toutes les tâches de l'utilisateur authentifié.
      */
@@ -27,12 +27,14 @@ class TaskController extends Controller
         // Valider les données de la requête
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'completed' => 'boolean',
         ]);
 
         // Créer une nouvelle tâche pour l'utilisateur connecté
         $task = $request->user()->tasks()->create($validatedData);
 
-        return response()->json($task, 201); // Retourner la tâche créée avec un code 201
+        return response()->json($task, 201);
     }
 
     /**
@@ -46,12 +48,14 @@ class TaskController extends Controller
         // Valider les données de la requête
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'completed' => 'boolean',
         ]);
 
         // Mettre à jour la tâche
         $task->update($validatedData);
 
-        return response()->json($task, 200); // Retourner la tâche mise à jour
+        return response()->json($task, 200);
     }
 
     /**
@@ -65,7 +69,7 @@ class TaskController extends Controller
         // Supprimer la tâche
         $task->delete();
 
-        return response()->noContent(); // Retourner une réponse vide avec un code 204
+        return response()->noContent();
     }
 
     /**
@@ -79,7 +83,7 @@ class TaskController extends Controller
         // Basculer l'état de complétion
         $task->update(['completed' => !$task->completed]);
 
-        return response()->json($task, 200); // Retourner la tâche mise à jour
+        return response()->json($task, 200);
     }
 
     /**
@@ -90,7 +94,6 @@ class TaskController extends Controller
         // Vérifier si l'utilisateur est autorisé à voir cette tâche
         $this->authorize('view', $task);
 
-        return response()->json($task, 200); // Retourner la tâche demandée
+        return response()->json($task, 200);
     }
 }
-
