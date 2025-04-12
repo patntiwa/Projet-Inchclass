@@ -1,4 +1,4 @@
-[# Projet React + Laravel - Todo App
+# Projet React + Laravel - Todo App
 
 Ce projet est une application de gestion de tâches (Todo App) construite avec un frontend en React et un backend en Laravel. L'application permet aux utilisateurs de s'inscrire, de se connecter, de gérer leurs tâches (ajouter, modifier, supprimer, marquer comme terminées) et de se déconnecter.
 
@@ -272,4 +272,3 @@ Vous pouvez utiliser deux terminaux pour lancer les serveurs Laravel et React si
 
 Ce projet est sous licence MIT. Vous êtes libre de l'utiliser, de le modifier et de le distribuer.
 ```
-](https://claude.site/artifacts/730fc6b5-7df5-447d-bdec-057f607cbcda)
